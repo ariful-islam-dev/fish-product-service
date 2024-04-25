@@ -7,9 +7,9 @@ describe("fish", () => {
         await request(app)
             .post("/fishes")
             .send({
-                name: "Coral fish",
-                sku: "SLF-006",
-                price: 100
+                name: "Batasio fish",
+                sku: "SLF-007",
+                price: 150
             })
             .expect(201);
     });
@@ -17,6 +17,12 @@ describe("fish", () => {
     it("should all fish", async () => {
         await request(app)
             .get("/fishes")
+            .expect(200);
+    })
+
+    it("should get specific fish", async () => {
+        await request(app)
+            .get("/fishes/clvfl2cy000008tkguzv4xcen")
             .expect(200);
     })
 })

@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { createFish, getFishes } from "./controllers";
+import { createFish, getFishById, getFishes } from "./controllers";
 // import { createInventory, getInventories, getInventoryById, updateInventory } from "../../inventory/src/controllers";
 
 const app = express();
@@ -17,13 +17,7 @@ app.get("/fishes",getFishes );
 
 app.post("/fishes", createFish );
 
-app.get("/fishes/:id", (req, res)=>{
-  res.status(200).json({
-    code: 200,
-    message: "Get Specific Fish",
-    data: {}
-  })
-} );
+app.get("/fishes/:id", getFishById );
 
 app.put("/fishes/:id", (req, res)=>{
   res.status(200).json({
