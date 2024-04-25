@@ -10,3 +10,10 @@ export const createFishDTOSchema = z.object({
     status: z.string().optional().default(Status.DRAFT) 
 })
 
+export const updateFishDTOSchema = z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    price: z.number().optional(),
+    status: z.nativeEnum(Status).optional() 
+})
