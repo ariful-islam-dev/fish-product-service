@@ -34,4 +34,10 @@ describe("fish", () => {
             })
             .expect(200);
     })
+
+    it("should delete specific fish", async () => {
+        await request(app)
+            .delete("/fishes/clvfl2cy000008tkguzv4xcen")
+            .expect(200);
+    })
 })
