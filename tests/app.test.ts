@@ -8,7 +8,7 @@ describe("fish", () => {
             .post("/fishes")
             .send({
                 name: "Catfish",
-                sku: "SLF-008",
+                sku: "SLF-009",
                 price: 150
             })
             .expect(201);

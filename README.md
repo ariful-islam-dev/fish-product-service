@@ -36,5 +36,5 @@ yarn migrate:dev
 - [x] POST /fishes - Create a new product
 - [x] PUT /fishes - Get product collection
 - [x] GET /fishes/:id - Get product Details
-- [ ] GET /fishes - Get all product
-- [ ] DELETE /fishes/:id - Delete Product
+- [x] GET /fishes - Get all product
+- [x] DELETE /fishes/:id - Delete Product
