@@ -1,15 +1,15 @@
-import { query } from "@/utils";
+import { query } from "../utils";
 import prisma from "../prisma";
 import { NextFunction, Request, Response } from "express";
 
-const getFishes = async(req:Request, res: Response, next:NextFunction)=>{
+const getFishes = async (req: Request, res: Response, next: NextFunction) => {
     const page = req.query.page ? parseInt(req.query.page as string) : 1;
     const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
     const sortType = req.query.sortType ? req.query.sortType as string : "desc";
     const sortBy = req.query.sortBy ? req.query.sortBy as string : "createdAt";
     const search = req.query.search ? req.query.search as string : "";
-   
-    try{
+
+    try {
         const fish = await prisma.fish.findMany({
             skip: (page - 1) * limit,
             take: limit,
@@ -21,11 +21,11 @@ const getFishes = async(req:Request, res: Response, next:NextFunction)=>{
             orderBy: {
                 [sortBy]: sortType
             },
-            
+
         });
 
         const data = query.getTransformItems(fish,
-            ["id","name", "sku", "description", "image", "price", "status", "inventoryId"],
+            ["id", "name", "sku", "description", "image", "price", "status", "inventoryId"],
             "/fishes"
         )
 
@@ -34,7 +34,7 @@ const getFishes = async(req:Request, res: Response, next:NextFunction)=>{
         const pagination = query.getPagination(totalItems, page, limit);
 
         // links
-        const links = query.getHateOsLinks(req.url,!!pagination["next"], !!pagination["prev"], req.path, req.query, page )
+        const links = query.getHateOsLinks(req.url, !!pagination["next"], !!pagination["prev"], req.path, req.query, page)
         return res.status(200).json({
             code: 200,
             message: 'Get All Fishes',
@@ -42,7 +42,7 @@ const getFishes = async(req:Request, res: Response, next:NextFunction)=>{
             pagination,
             links
         })
-    }catch(err){
+    } catch (err) {
         next(err)
     }
 }
