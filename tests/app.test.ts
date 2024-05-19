@@ -22,7 +22,7 @@ describe("fish", () => {
 
     it("should get specific fish", async () => {
         await request(app)
-            .get("/fishes/clvfl2cy000008tkguzv4xcen")
+            .get("/fishes/clvfo50490000ulcbvn2panyq")
             .expect(200);
     })
 
