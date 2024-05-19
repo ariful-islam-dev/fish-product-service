@@ -7,9 +7,9 @@ describe("fish", () => {
         await request(app)
             .post("/fishes")
             .send({
-                name: "Catfish",
-                sku: "SLF-009",
-                price: 150
+                name: "Halibut",
+                sku: "SLF-013",
+                price: 280
             })
             .expect(201);
     });
@@ -22,13 +22,13 @@ describe("fish", () => {
 
     it("should get specific fish", async () => {
         await request(app)
-            .get("/fishes/clvfo50490000ulcbvn2panyq")
+            .get("/fishes/clwdqzsfy00005rkohynds0zp")
             .expect(200);
     })
 
     it("should update specific fish", async () => {
         await request(app)
-            .put("/fishes/clvfl2cy000008tkguzv4xcen")
+            .put("/fishes/clwdqzsfy00005rkohynds0zp")
             .send({
                 price: 250
             })
@@ -37,7 +37,7 @@ describe("fish", () => {
 
     it("should delete specific fish", async () => {
         await request(app)
-            .delete("/fishes/clvfl2cy000008tkguzv4xcen")
+            .delete("/fishes/clvfiluqj0000l4hrdairr1io")
             .expect(200);
     })
 })
